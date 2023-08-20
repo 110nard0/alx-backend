@@ -39,7 +39,10 @@ class Server:
 
         start_index, end_index = index_range(page, page_size)
 
-        return self.dataset()[start_index:end_index]
+        try:
+            return self.dataset()[start_index:end_index]
+        except IndexError:
+            return []
 
     def get_hyper(self, page: int = 1, page_size: int = 10) -> List[List]:
         """Supplies a dictionary containing several key-value pairs
@@ -57,5 +60,5 @@ class Server:
                 'data': data,
                 'next_page': next_page,
                 'prev_page': prev_page,
-                'total_pags': total_pages
+                'total_pages': total_pages
                 }
