@@ -43,7 +43,7 @@ class Server:
         """Dataset with deletion-resilient hypermedia pagination
         """
         assert isinstance(index, int) and index >= 0\
-                                      and index < len(self.__indexed_dataset)
+            and index < len(self.__indexed_dataset)
         assert isinstance(page_size, int) and page_size > 0
 
         indexed_dataset = self.__indexed_dataset
