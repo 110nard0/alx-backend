@@ -43,13 +43,14 @@ class Server:
         """Dataset with deletion-resilient hypermedia pagination
         """
         assert isinstance(index, int) and index >= 0\
-            and index < len(self.__indexed_dataset)
+            and index < len(self.indexed_dataset())
         assert isinstance(page_size, int) and page_size > 0
 
         indexed_dataset = self.__indexed_dataset
         dataset_size = len(indexed_dataset)
         data = []
         next_index = index
+
         for _ in range(page_size):
             while next_index < dataset_size\
                   and indexed_dataset.get(next_index) is None:
