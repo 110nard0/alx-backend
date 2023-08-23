@@ -18,7 +18,7 @@ class FIFOCache(BaseCaching):
         """Assigns to the instance dictionary the item value for the key
         """
         if key and item:
-            self.cache_data[key] = item           
+            self.cache_data[key] = item
             self.cache_list.append(key)
         else:
             pass
