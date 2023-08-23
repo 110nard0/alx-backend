@@ -6,7 +6,7 @@ BaseCaching = __import__('base_caching').BaseCaching
 
 class LIFOCache(BaseCaching):
     """LIFOCache is a caching system that stores key:value pairs in a
-    public instance dictionary using the First In-First Out algorithm
+    public instance dictionary using the Last-In:First-Out algorithm
     """
     def __init__(self):
         """Initializes LIFOCache instance
