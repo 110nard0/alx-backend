@@ -5,7 +5,8 @@ BaseCaching = __import__('base_caching').BaseCaching
 
 
 class BasicCache(BaseCaching):
-    """BasicCache
+    """BasicCache is a caching system that stores key:value pairs
+    in a built-in dictionary with no limits
     """
     def __init__(self):
         """Initializes BasicCache instance
