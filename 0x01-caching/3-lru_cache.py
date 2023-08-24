@@ -1,9 +1,9 @@
 #!/usr/bin/python3
 """LRUCache module"""
 
-BaseCaching = __import__('base_caching').BaseCaching
-
 from datetime import datetime
+
+BaseCaching = __import__('base_caching').BaseCaching
 
 
 class LRUCache(BaseCaching):
