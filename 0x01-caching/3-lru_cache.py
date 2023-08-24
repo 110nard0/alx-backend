@@ -1,43 +1,44 @@
-#!/usr/bin/env python3
-""" BaseCaching module
-"""
-from base_caching import BaseCaching
+#!/usr/bin/python3
+"""LRUCache module"""
+
+BaseCaching = __import__('base_caching').BaseCaching
+
+from datetime import datetime
 
 
 class LRUCache(BaseCaching):
-    """
-    FIFOCache defines a FIFO caching system
+    """LRUCache is a caching system that stores key:value pairs in a
+    public instance dictionary using the Least Recently Used algorithm
     """
     def __init__(self):
-        """
-        Initialize the class with the parent's init method
+        """Initializes LRUCache instance
         """
         super().__init__()
-        self.usage = []
+        self.cache_dict = {}
 
-    def put(self, key, item):
+    def put(self, key: any, item: any):
+        """Assigns to the instance dictionary the item value for the key
         """
-        Cache a key-value pair
+        if key and item:
+            if len(self.cache_data) == BaseCaching.MAX_ITEMS\
+                    and key not in self.cache_data:
+                least = min(self.cache_dict.values())
+                for k, v in self.cache_dict.items():
+                    if v == least:
+                        least_recent = k
+                print(f'DISCARD: {least_recent}')
+                del self.cache_data[least_recent]
+                del self.cache_dict[least_recent]
+            self.cache_data[key] = item
+            self.cache_dict[key] = datetime.now()
+        else:
+            pass
+
+    def get(self, key: any) -> any:
+        """Returns the value in the instance dictionary linked to key
         """
-        if key is None or item is None:
+        if key is None or not self.cache_data.get(key):
             pass
         else:
-            length = len(self.cache_data)
-            if length >= BaseCaching.MAX_ITEMS and key not in self.cache_data:
-                print("DISCARD: {}".format(self.usage[0]))
-                del self.cache_data[self.usage[0]]
-                del self.usage[0]
-            if key in self.usage:
-                del self.usage[self.usage.index(key)]
-            self.usage.append(key)
-            self.cache_data[key] = item
-
-    def get(self, key):
-        """
-        Return the value linked to a given key, or None
-        """
-        if key is not None and key in self.cache_data.keys():
-            del self.usage[self.usage.index(key)]
-            self.usage.append(key)
-            return self.cache_data[key]
-        return None
+            self.cache_dict[key] = datetime.now()
+            return self.cache_data.get(key)
