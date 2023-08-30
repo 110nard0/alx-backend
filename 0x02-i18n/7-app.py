@@ -64,7 +64,7 @@ def get_timezone():
 
     if g.user and g.user.get('timezone'):
         try:
-            pytz(g.user['timezone'])
+            pytz.timezone(g.user['timezone'])
             return g.user['timezone']
         except pytz.exceptions.UnknownTimeZoneError:
             pass
