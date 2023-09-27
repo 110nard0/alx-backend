@@ -71,4 +71,3 @@ for (const [index, jobData] of jobs.entries()) {
     console.log(`Notification job ${job.id} ${progress}% complete`);
   });
 }
-
