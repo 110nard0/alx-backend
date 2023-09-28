@@ -38,7 +38,7 @@ const getCurrentReservedStockById = async (itemId) => {
 // Routes
 app.get('/list_products', (req, res) => {
   const returnList = listProducts.map(product => {
-	let {currentQuantity, ...withoutCurrentQuantity} = product;
+	let { currentQuantity, ...withoutCurrentQuantity } = product;
 	return withoutCurrentQuantity;
   });
   res.json(returnList);

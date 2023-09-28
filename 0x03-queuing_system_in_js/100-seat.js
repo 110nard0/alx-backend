@@ -38,7 +38,7 @@ app.get('/reserve_seat', (req, res) => {
 
   const job = queue.create('reserve_seat').save((err) => {
     if (!err) {
-      res.json({ status: 'Reservation in progress' });
+      res.json({ status: 'Reservation in process' });
     } else {
       res.json({ status: 'Reservation failed' });
     }
